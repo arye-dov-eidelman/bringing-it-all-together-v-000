@@ -13,7 +13,7 @@ class Dog
       VALUES (?, ?)
     SQL
     DB[:conn].execute(sql, @name, @breed)
-
+    self
   end
 
   def self.create_table
