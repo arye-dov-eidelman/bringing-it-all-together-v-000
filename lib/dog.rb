@@ -41,8 +41,11 @@ class Dog
       SELECT * FROM dogs
       WHERE id = ?
     SQL
-    row = DB[:conn].execute(sql, id)[0]
-    self.new({id: row[0], name: row[1], breed: row[2]})
+    if row = DB[:conn].execute(sql, id)[0]
+      self.new({id: row[0], name: row[1], breed: row[2]})
+    else
+      nil
+    end
   end
 
   def self.find_or_create_by(data)
