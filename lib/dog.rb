@@ -49,7 +49,7 @@ class Dog
     binding.pry
     sql =  <<-SQL
       SELECT * FROM dogs
-      WHERE name = ?
+      WHERE name = ? & breed = ?
     SQL
     row = DB[:conn].execute(sql, data[:name], data[:breed])[0]
     if row
