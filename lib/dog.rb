@@ -52,10 +52,10 @@ class Dog
     SQL
     row = DB[:conn].execute(sql, data[:name], data[:breed])[0]
     if row
-      print row[0]
+      print "id: #{row[0]}"
       self.new({id: row[0], name: row[1], breed: row[2]})
     else
-      print data[:id]
+      print "id: #{data[:id]}"
       self.create(data)
     end
   end
