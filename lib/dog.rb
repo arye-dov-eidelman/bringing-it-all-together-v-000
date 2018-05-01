@@ -51,9 +51,9 @@ class Dog
   def self.find_by_name(name)
     sql =  <<-SQL
       SELECT * FROM dogs
-      WHERE id = ?
+      WHERE name = ?
     SQL
-    if row = DB[:conn].execute(sql, id)[0]
+    if row = DB[:conn].execute(sql, name)[0]
       self.new({id: row[0], name: row[1], breed: row[2]})
     else
       nil
