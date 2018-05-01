@@ -3,7 +3,7 @@ class Dog
   attr_accessor :id, :name, :breed
 
   def initialize(data)
-    @id = nil unless id
+    @id = nil # unless id
     data.each{ |k, v| self.send("#{k}=", v) }
   end
 
