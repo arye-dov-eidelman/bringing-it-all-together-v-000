@@ -7,6 +7,15 @@ class Dog
     data.each{ |k, v| self.send("#{k}=", v) }
   end
 
+  def save
+    sql =  <<-SQL
+      INSERT INTO dogs(name, breed)
+      VALUES (? ?)
+    SQL
+    DB[:conn].execute(sql)
+    
+  end
+
   def self.create_table
     sql =  <<-SQL
     CREATE TABLE IF NOT EXISTS dogs (
