@@ -56,6 +56,7 @@ class Dog
       self.new({id: row[0], name: row[1], breed: row[2]})
     else
       print row
+      binding.pry
       self.create(row)
     end
   end
