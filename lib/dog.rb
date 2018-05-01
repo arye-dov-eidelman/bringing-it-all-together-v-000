@@ -46,6 +46,7 @@ class Dog
   end
 
   def self.find_or_create_by(data)
+    binding.pry
     sql =  <<-"SQL"
       SELECT * FROM dogs
       WHERE name = ? & breed = ?
