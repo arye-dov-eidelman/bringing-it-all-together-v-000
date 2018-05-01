@@ -17,10 +17,6 @@ class Dog
     self
   end
 
-  def self.create(data)
-    self.new(data).save
-  end
-
   def self.create_table
     sql =  <<-SQL
     CREATE TABLE IF NOT EXISTS dogs (
@@ -36,4 +32,16 @@ class Dog
     DB[:conn].execute("DROP TABLE IF EXISTS dogs")
   end
 
+  def self.create(data)
+    self.new(data).save
+  end
+
+  def self.find_by_id(id)
+    sql =  <<-SQL
+      SELECT * FROM dogs
+      WHERE id = ?
+    SQL
+    row = DB[:conn].execute(sql, id)
+
+  end
 end
