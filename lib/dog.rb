@@ -17,6 +17,17 @@ class Dog
     self
   end
 
+  def update
+    sql =  <<-SQL
+      UPDATE dogs(name, breed)
+      VALUES (?, ?)
+      WHERE id = ?
+    SQL
+    DB[:conn].execute(sql, @name, @breed, @id)
+    @id = DB[:conn].execute('SELECT last_insert_rowid()')[0][0]
+    self
+  end
+
   def self.create_table
     sql =  <<-SQL
     CREATE TABLE IF NOT EXISTS dogs (
