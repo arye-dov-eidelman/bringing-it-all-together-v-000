@@ -3,7 +3,7 @@ class Dog
   attr_accessor :id, :name, :breed
 
   def initialize(data)
-    @id = nil
+    @id = nil unless id
     data.each{ |k, v| self.send("#{k}=", v) }
   end
 
@@ -42,6 +42,8 @@ class Dog
       WHERE id = ?
     SQL
     row = DB[:conn].execute(sql, id)
+    self.new({id: row[0], name: row[1], breed: row[2]})
+
 
   end
 end
