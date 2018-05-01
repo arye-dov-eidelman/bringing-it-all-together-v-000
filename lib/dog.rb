@@ -50,8 +50,7 @@ class Dog
       SELECT * FROM dogs
       WHERE name = ? AND breed = ?
     SQL
-    row = DB[:conn].execute(sql, data[:name], data[:breed])[0]
-    if row
+    if row = DB[:conn].execute(sql, data[:name], data[:breed])[0]
       self.new_from_db(row)
     else
       self.create(data)
