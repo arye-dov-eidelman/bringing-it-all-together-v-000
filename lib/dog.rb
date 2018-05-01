@@ -46,17 +46,17 @@ class Dog
   end
 
   def self.find_or_create_by(data)
-    binding.pry
+    # binding.pry
     sql =  <<-SQL
       SELECT * FROM dogs
       WHERE name = ? AND breed = ?
     SQL
     row = DB[:conn].execute(sql, data[:name], data[:breed])[0]
     if row
-      print "found\n row: #{row}\ndata: #{data}"
+      # print "found\n row: #{row}\ndata: #{data}"
       self.new({id: row[0], name: row[1], breed: row[2]})
     else
-      print "not found\n row: #{row}\ndata: #{data}"
+      # print "not found\n row: #{row}\ndata: #{data}"
       self.create(data)
     end
   end
