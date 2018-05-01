@@ -1,5 +1,8 @@
 require 'pry'
 
 class Dog
-print pry
+
+  def initialize(name:, bread:)
+
+  end
 end
