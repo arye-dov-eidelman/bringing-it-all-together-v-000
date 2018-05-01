@@ -57,7 +57,7 @@ class Dog
     else
       print row
       binding.pry
-      self.create(row)
+      self.create(data)
     end
   end
 end
