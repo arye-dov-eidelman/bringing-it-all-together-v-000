@@ -51,7 +51,10 @@ class Dog
       WHERE name = ? & breed = ?
     SQL
     row = DB[:conn].execute(sql, data[:name], data[:breed])[0]
-    binding.pry
-    self.new({id: row[0], name: row[1], breed: row[2]})
+    if row
+      self.new(row)
+    else
+      self.create(row)
+    end
   end
 end
