@@ -52,7 +52,6 @@ class Dog
     SQL
     row = DB[:conn].execute(sql, data[:name], data[:breed])[0]
     if row
-      # self.new({id: row[0], name: row[1], breed: row[2]})
       self.new_from_db(row)
     else
       self.create(data)
