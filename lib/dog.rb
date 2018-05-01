@@ -19,6 +19,7 @@ class Dog
 
   def self.create
     self.new(data).save
+  end
 
   def self.create_table
     sql =  <<-SQL
