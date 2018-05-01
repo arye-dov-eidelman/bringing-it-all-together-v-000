@@ -54,6 +54,7 @@ class Dog
         breed = ?
     SQL
     row = DB[:conn].execute(sql, data[:id], data[:name], data[:breed])[0]
+    binding.pry
     self.new({id: row[0], name: row[1], breed: row[2]})
   end
 end
