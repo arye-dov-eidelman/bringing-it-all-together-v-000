@@ -53,7 +53,7 @@ class Dog
         name = ? &
         breed = ?
     SQL
-    row = DB[:conn].execute(sql, id, name, breed)[0]
+    row = DB[:conn].execute(sql, data[:id], data[:name], data[:breed])[0]
     self.new({id: row[0], name: row[1], breed: row[2]})
   end
 end
