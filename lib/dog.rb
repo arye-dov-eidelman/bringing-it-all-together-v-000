@@ -6,7 +6,7 @@ class Dog
   def initialize(data)
     print self
     binding.pry
-    data.each{|k, v| self.send(k.to_s+'=', v)}
+    data.each{|k, v| self.send("self.#{k}=", v)}
   end
 
 end
